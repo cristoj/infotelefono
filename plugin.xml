@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ 
+<plugin xmlns="http://www.phonegap.com/ns/plugins/1.0"
+           id="es.webtop.infotelefonoplugin"
+      version="0.1.0">
+    <name>InfoTelefonoPlugin</name>
+    <description>Permite obtener una identificación única del dispositivo</description>
+    <license>CC</license>
+    <keywords>phonegap, id, imei, telephone, number, imsi</keywords>
+ 
+    <js-module src="www/infotelefonoplugin.js"  name="infotelefonoplugin">
+        <clobbers target="window.telefono" />
+    </js-module>
+ 
+    <!-- android -->
+    <platform name="android">
+        <config-file target="res/xml/config.xml" parent="/*">
+            <feature name="infotelefonoplugin">
+               <!-- es el packacge de java con el nombre de la clase sin .java -->
+                <param name="android-package"
+                       value="es.webtop.infotelefonoplugin.InfoTelefonoPlugin"/>
+            </feature>
+        </config-file>
+        <config-file target="AndroidManifest.xml" parent="/*">
+           <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+        </config-file>
+ 
+        <source-file src="src/android/com/webtop/infotelefonoplugin/InfoTelefonoPlugin.java"
+                     target-dir="src/com/webtop/infotelefonoplugin" />      
+     </platform>          
+</plugin>
